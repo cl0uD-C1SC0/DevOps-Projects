@@ -1,7 +1,13 @@
-# Objective:
-<img src="minikube/Minikube.png" width="100">
-Gabriel works on an big enterprise, where have a big variety of clients around the globe. Your boss did a request where your objective is creates an web app which print an environment variable in web using tools like Docker Images and Kubernetes. But, this is not the objective principale, the architecture is a local machine using an tool to create a k8s cluster, like minikube, this architecture it has to be resilient, scalable, and the code has to be confiable and securely, the app goes to web port 80 and you has to make the use of an tool makes easy understand the app and view (Like ArgoCD) or others.
-
+# Problem:
+<div align="center">
+  <div align="center">
+  Gabriel works on an big enterprise, where have a big variety of clients around the globe. Your boss did a request where your objective is creates an web app which    print an environment variable in web using tools like Docker Images and Kubernetes. But, this is not the objective principale, the architecture is a local machine using an tool to create a k8s cluster, like minikube, this architecture it has to be resilient, scalable, and the code has to be confiable and securely, the app goes to web port 80 and you has to make the use of an tool makes easy understand the app and view (Like ArgoCD) or others.
+    <div>
+      <h1>Gabriel creates the "Minikube of Frying"</h1>
+      <img src="minikube/Minikube (1).png" width="200">
+    </div>
+    </div>
+</div>
 
 ---
 # Steps in Local Machine:
@@ -112,3 +118,5 @@ To put HPA (Horizontal Pod Autoscalling) in LocalMachine with Minikube, copy and
 > minikube addons enable metrics-server
   
 > kubectl autoscale deployment -n challenge-projeto challenge-deploy --cpu-percent=20 --min=1 --max=10
+
+OBS: Frying is because the computer that was used was frying with the use of minikube and other applications
