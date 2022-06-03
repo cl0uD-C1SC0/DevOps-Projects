@@ -48,6 +48,8 @@
 🟢 8 Minikube of Frying > Project in LocalMachine utilizing a Minikube, PHP, SonarQube, ArgoCD, HPA, and more!
 
 ---
+<h5 align="center">
+   Projects by: José Gabriel -> View my LinkedIn Profile bellow
+   </h5>
 <h1 align="center">
-<a href="https://www.linkedin.com/in/jgsiqueiraa/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="100" hspace="0" vspace="15"></a> <a href="https://t.me/JoseGabrielSSilva"><img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" width="100" hspace="0" vspace="15"> </a>
-  <a href="mailto:siqueirajosesantos19@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" width="80" hspace="0" vspace="15"></a></h1>
+<a href="https://www.linkedin.com/in/jgsiqueiraa/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" width="100" hspace="50" vspace="30"></a>
