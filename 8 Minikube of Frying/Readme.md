@@ -1,15 +1,9 @@
-# Challenge 02 - Print an environment variable in Web APP
-
 # Objective:
-Resumo: Deverá ser feito uma pagina web que exiba no corpo somente a mensagem Olá <nome>, este nome será um valor
-que será consumido via variavel de ambiente pela aplicação. Poderá ser utilizado qualquer linguagem de programação. Após a página pronta, conteinerizar esta aplicação com docker e montar manifestos kubernetes (Service, Configmap[A variavel vai aqui], Deployment[com resources], Namespace); Montar escalonamento horizontal para o container, que, quando chegar a 20% de uso do CPU, escalar outro container, com um minimo de containers 1 e maximo 10. O kubernetes deve ser utilizado na PROPRIA maquina, ou seja, é necessário instanciar um kubernetes com minikube ou K3D ou ferramenta parecida.
-Colocar os manifestos em um repositório git.
-Instanciar um ArgoCD via Docker na própria maquina, adicionar o cluster e o repositório no ArgoCD e então criar um APP no ArgoCD para a aplicação. (A Ideia aqui, é que quando houver uma alteração no repositório, o ArgoCD altere o cluster local com as alterações feitas no repositório git).
+<img src="minikube/Minikube.png" width="100">
+Gabriel works on an big enterprise, where have a big variety of clients around the globe. Your boss did a request where your objective is creates an web app which print an environment variable in web using tools like Docker Images and Kubernetes. But, this is not the objective principale, the architecture is a local machine using an tool to create a k8s cluster, like minikube, this architecture it has to be resilient, scalable, and the code has to be confiable and securely, the app goes to web port 80 and you has to make the use of an tool makes easy understand the app and view (Like ArgoCD) or others.
+
 
 ---
-
-# STEPS in Cloud:
-
 # Steps in Local Machine:
 ## REQUIREMENTS:
 
