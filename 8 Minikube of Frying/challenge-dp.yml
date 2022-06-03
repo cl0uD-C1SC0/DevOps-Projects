@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: challenge-deploy
+  namespace: challenge-projeto
+spec:
+  replicas: 2
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: challenge-projeto
+  template:
+    metadata:
+      labels:
+        app: challenge-projeto
+    spec:
+      containers:
+        - image: josegabriel/web:latest 
+          name: challenge-ui
+          env:
+            - name: nome
+              valueFrom:
+                configMapKeyRef:
+                  name: challenge-configmap
+                  key: nome
+          readinessProbe:
+              tcpSocket:
+                port: 80
+              initialDelaySeconds: 30
+              periodSeconds: 10
+          livenessProbe:
+              tcpSocket:
+                port: 80
+              initialDelaySeconds: 15
+              periodSeconds: 20
+          ports:
+          - containerPort: 80
+          resources:
+            limits:
+              cpu: 500m
+              memory: 900Mi
+            requests:
+              cpu: 200m
+              memory: 500Mi

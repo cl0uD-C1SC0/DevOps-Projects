@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: challenge-configmap
+  namespace: challenge-projeto
+data:
+  nome: jose
