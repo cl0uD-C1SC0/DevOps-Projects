@@ -30,22 +30,29 @@
   </div>
 </h1> <br>
 
-# Projects To Do:
-🟢 1 CreatingCntainerError > Project utilizing initial concepts with Docker and Kubernetes tools
+# Kubernetes CI/CD Projects:
+🔴 AirPlaneCI > Project automatized utilizing a DroneCI plataform to create a pipeline
 
-🟢 2 University of Nginx > Project utilizing initial concepts of Docker and Kubernetes, but utilizing a Nginx Ingress in Google Cloud
+🔴 Buildfield 2042 > Mainly Project utilizing Docker, Kubernetes, GCP, CloudBuild YAML + Shellscripting, Docker Hub, ArgoCD and OWASP
 
-🟢 4 S.O.S ALB > Project utilizing initial concepts of Docker and Kubernetes, but utilizing a Application Load Balancer Ingress in AWS
+🔴 Call of Pipe 1998 > Project atuomatized utiling AWS CI/CD tools
 
-🟢 3 Hyundai HPA > Project utilizig HPA, replicaSet, readinessProbe and livenessProbe
+# Kubernetes Projects:
+🔴 S.O.S ALB > Project utilizing initial concepts of Docker and Kubernetes, but utilizing a Application Load Balancer Ingress in AWS
 
-🟢 5 AirPlaneCI > Project automatized utilizing a DroneCI plataform to create a pipeline
+🔴 CreatingCntainerError > Project utilizing initial concepts with Docker and Kubernetes tools
 
-🟢 6 Buildfield 2042 > Mainly Project utilizing Docker, Kubernetes, GCP, CloudBuild YAML + Shellscripting, Docker Hub, ArgoCD and OWASP
+🔴 University of Nginx > Project utilizing initial concepts of Docker and Kubernetes, but utilizing a Nginx Ingress in Google Cloud
 
-🟢 7 Call of Pipe 1998 > Project atuomatized utiling AWS CI/CD tools
+🟢 Hyundai HPA > Project utilizig HPA, replicaSet, readinessProbe and livenessProbe
 
-🟢 8 Minikube of Frying > Project in LocalMachine utilizing a Minikube, PHP, SonarQube, ArgoCD, HPA, and more!
+🟢 Minikube of Frying > Project in LocalMachine utilizing a Minikube, PHP, SonarQube, ArgoCD, HPA, and more!
+
+# Docker CD Projects:
+🔴 DockerBuild > Project using a AWS CodeBuild to build docker image and push to AWS ECR and DockerHub
+
+# Docker Projects:
+🔴 DOCker > Project using a Docker image and a website to host a Everbody Hates Chris site
 
 ---
 <h5 align="center">
