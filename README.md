@@ -31,6 +31,8 @@
 </h1> <br>
 
 # Kubernetes CI/CD Projects:
+🟢 Hyundai HPA > Project utilizig HPA, replicaSet, readinessProbe and livenessProbe and AUTOMATION HAHAHA (Seriously, it's very necessary)
+
 🔴 AirPlaneCI > Project automatized utilizing a DroneCI plataform to create a pipeline
 
 🔴 Buildfield 2042 > Mainly Project utilizing Docker, Kubernetes, GCP, CloudBuild YAML + Shellscripting, Docker Hub, ArgoCD and OWASP
@@ -43,8 +45,6 @@
 🔴 CreatingCntainerError > Project utilizing initial concepts with Docker and Kubernetes tools
 
 🔴 University of Nginx > Project utilizing initial concepts of Docker and Kubernetes, but utilizing a Nginx Ingress in Google Cloud
-
-🟢 Hyundai HPA > Project utilizig HPA, replicaSet, readinessProbe and livenessProbe
 
 🟢 Minikube of Frying > Project in LocalMachine utilizing a Minikube, PHP, SonarQube, ArgoCD, HPA, and more!
 
