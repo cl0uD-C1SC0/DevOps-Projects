@@ -68,17 +68,22 @@
   - Create an EKS CLUSTER => RUN the command: eksctl create cluster -f EKS-Cluster.yaml
   - Wait for the Cloudformation Stack to be ready!
 
-# STEP 2 - AWS CodeBuild: 
+# STEP 2 - Github Repositories:
+- Create an repository with the name: hyundai-project
+  - Our CodePipeline use this repository to check periodiacally updates
+  - Our CodeBuild use this repository where contains the buildspec.yaml
+  - Create other branch named "homolog"
+- Create an repository with the name: hyundai-project-hml:
+  - OBS: Our buildspec.yaml script check this repository with the "-hml" for the upload of deployment
+
+# STEP 3 - AWS CodeBuild: 
 - Create and AWS CodeBuild project:
   - 
 
-# STEP 3 - AWS CodePipeline:
+# STEP 4 - AWS CodePipeline:
 - Create and AWS CodePipeline project:
 
-
-# STEP 4 - Github Repositories:
-- Create an repository with the name: hyundai-project
-  - Our CodePipeline use this repository to check periodiacally updates
-  - Our CodeBuild use this repository where contains the buildspec.yaml 
-- Create an repository with the name: hyundai-project-hml:
-  - OBS: Our buildspec.yaml script check this repository with the "-hml" for the upload of deployment
+# STEP 5 - K8S:
+- ...
+- ...
+- ...
