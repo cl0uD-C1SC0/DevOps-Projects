@@ -179,13 +179,29 @@ OBS: The project version currently is v1, therefore, in v2 there will be improve
     - Save the file
   - Run the pipeline again, click on release changes to look for a new errors, or, not =)
   - If pipeline run ok, commit a empty change to repository "hyundai-project" and wait for the magic happens
-## STEP 8 - APPLY the newest manifests:
-- Clone the "hyundai-project-hml"
-- Go to the this repository and apply the manifests running: (Replace file.yaml to the files of project)
+
+## STEP 8 - Configure CONFIG MAP of EKS Cluster
+- Run the AWS Configure on your terminal
+  - Configure your AWS Access Key and Secret Access Key
+- Run in Terminal the following command:
 ```
-kubectl apply -f file.yaml
+kubectl edit -n kube-system cm aws-auth
 ```
-## STEP 9 - APPLY the HPA:
+- In this Edit add the following resources:
+  - In MapRoles sections add:
+  ```
+  - groups:
+        - system:masters
+        rolearn: arn:aws:iam::<account-id>:role/<codebuild-role-name>
+        username: <codebuild-role-name>
+  ```
+  - Replace <account-id> with yours
+  - Replace <codebuild-role-name> with yours
+  - After Edit put these lines, press 'ESC' button on keyboard and put :wq to save and exit of the edit
+  - This IAM Role can used in others CodeBuild Projects.
+  - This IAM Role is used to authenticate CodeBuild to make requests on kubectl CLI (into CLUSTER) like create namespaces.
+  
+## STEP 8 - APPLY the HPA:
 - RUN this command to apply HPA in Project:
 ```
 kubectl autoscale deployment -n hyundai-project hyundai-project-dp --cpu-percent=50 --min=1 --max=10
