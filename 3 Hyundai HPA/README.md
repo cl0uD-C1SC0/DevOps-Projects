@@ -201,7 +201,7 @@ kubectl edit -n kube-system cm aws-auth
   - This IAM Role can used in others CodeBuild Projects.
   - This IAM Role is used to authenticate CodeBuild to make requests on kubectl CLI (into CLUSTER) like create namespaces.
   
-## STEP 8 - APPLY the HPA:
+## STEP 9 - APPLY the HPA:
 - RUN this command to apply HPA in Project:
 ```
 kubectl autoscale deployment -n hyundai-project hyundai-project-dp --cpu-percent=50 --min=1 --max=10
