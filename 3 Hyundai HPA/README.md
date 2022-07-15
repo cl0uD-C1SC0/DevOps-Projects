@@ -212,6 +212,15 @@ aws ecr get-login-password --region <aws-region> | docker login --username AWS -
 ```
 - Replace the <aws-region> value with yours
 - Replace the <account-id> value with yours
+- Second, follow these steps:
+  - In your root directory > cat .docker/config.json
+  - Copy the "auth" value
+  - Now, execute this command:
+  ```
+    kubectl create secret docker-registry ecr-registry --docker-server=https://<account-id>.dkr.ecr.<aws-region>.amazonaws.com --docker-username=AWS --docker-password=<auth-value> -n <namespace>
+  ```
+  - Replace <account-id>, <aws-region> and <auth-value> with yours.
+  - Replace <namespace> with yours, in this project, you should use hyundai-project. 
 
 ## STEP 10 - Create and Attach Policy to your NODE!!
 - Create an Policy to make possible Pull image of ECR Private Registry
