@@ -116,6 +116,7 @@ OBS: The project version currently is v1, therefore, in v2 there will be improve
       - Group name: hyundai-project
       - Stream name: project-
   - Create the CodeBuild Project
+  
 ## STEP 4 - ECR:
 - Create and AWS Elastic Container Registry
   - Go to the AWS ECR
@@ -125,6 +126,7 @@ OBS: The project version currently is v1, therefore, in v2 there will be improve
     - Repository Name: hyundai-project
     - Enable "Scan On Push"
   - Create Repository
+  
 ## STEP 5 - AWS Secrets Manager:
 - Create TWO Secrets in AWS Secrets Manager:
   - Secret ONE (1):
@@ -146,6 +148,7 @@ OBS: The project version currently is v1, therefore, in v2 there will be improve
       * E.g: ghp_exampletoken12345...
     - Secret Name: GHP_TOKEN
     - Disable the Secret Rotation and Store the new secret
+    
 ## STEP 6 - AWS Identity and Access Management (IAM):
 - Go to the IAM
 - Search for the CodeBuild iam role where the codebuild uses
@@ -153,6 +156,7 @@ OBS: The project version currently is v1, therefore, in v2 there will be improve
   - AWSCodePipelineReadOnlyAccess
   - AmazonEC2ContainerRegistryFullAccess
   - SecretsManagerReadWrite
+  - Add In-line policy, use this file > eks-Describe-policy.json
 ## STEP 7 - AWS CodePipeline:
 - Create and AWS CodePipeline project:
   - Go to the AWS CodePipeline
