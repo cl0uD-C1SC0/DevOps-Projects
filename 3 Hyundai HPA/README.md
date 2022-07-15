@@ -204,8 +204,24 @@ kubectl edit -n kube-system cm aws-auth
   - After Edit put these lines, press 'ESC' button on keyboard and put :wq to save and exit of the edit
   - This IAM Role can used in others CodeBuild Projects.
   - This IAM Role is used to authenticate CodeBuild to make requests on kubectl CLI (into CLUSTER) like create namespaces.
+
+## STEP 9 - Create DOCKER SECRET do K8s Pull the Image:
+- First, execute this command:
+```
+aws ecr get-login-password --region <aws-region> | docker login --username AWS --password-stdin <account-id>.dkr.ecr.<aws-region>.amazonaws.com
+```
+- Replace the <aws-region> value with yours
+- Replace the <account-id> value with yours
+
+## STEP 10 - Create and Attach Policy to your NODE!!
+- Create an Policy to make possible Pull image of ECR Private Registry
+  - Go to IAM Dashboard
+  - Search for the IAM Function of your Worker Nodes
+  - In "Permissions policies" click on "Add permissions" and click in "Create inline policy"
+  - Attach this permission template > ecr.json
+  - Apply
   
-## STEP 9 - APPLY the HPA:
+## STEP 11 - APPLY the HPA:
 - RUN this command to apply HPA in Project:
 ```
 kubectl autoscale deployment -n hyundai-project hyundai-project-dp --cpu-percent=50 --min=1 --max=10
@@ -214,6 +230,9 @@ kubectl autoscale deployment -n hyundai-project hyundai-project-dp --cpu-percent
 ```
 kubectl get hpa
 ```
+## STEP 12 - Apply the manifests:
+- In this final step, apply all manifests (Service, Ingress and Deployment)
+- Thanks!
 
 ---
 ## Thanks for seeing my project, this project it is for self-study and for my Professional Portfolio. But, for now connect to me in my LinkedIn profile to see more DevOps projects made by me and Follow-me on the Github! Thanks
