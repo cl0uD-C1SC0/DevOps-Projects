@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hyundai-project-dp
+  namespace: hyundai-project
+spec:
+  selector:
+    matchLabels:
+      app: hyundai-project
+  replicas: 1
+  revisionHistoryLimit: 0
+  template:
+    metadata:
+      labels:
+        app: hyundai-project
+    spec:
+      containers:
+        - name: hyundai-project-container
+          image: 326213389784.dkr.ecr.us-east-1.amazonaws.com/hyundai-project:00b43
+          imagePullPolicy: Always
+          readinessProbe:
+              tcpSocket:
+                port: 80
+              initialDelaySeconds: 30
+              periodSeconds: 10
+          livenessProbe:
+              tcpSocket:
+                port: 80
+              initialDelaySeconds: 15
+              periodSeconds: 20
+      imagePullSecrets:
+        - name: ecr-registry

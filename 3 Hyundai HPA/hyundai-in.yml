@@ -1,20 +1,21 @@
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: hyundai-in
-  namespace: hyundai-projeto
+  name: hyundai-project-in
+  namespace: hyundai-project
   annotations:
   # use the shared ingress-nginx
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-  - host: hyundai-rp.com
+  - host: ingressprd2rp.ddns.net
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: hyundai-service
+            name: hyundai-project-svc
             port:
               number: 80
