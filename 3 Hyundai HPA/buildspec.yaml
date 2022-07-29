@@ -1,0 +1,175 @@
+version: 0.2
+
+# FALTA:
+# STEP DE ADD O CLUSTER NO KUBECONFIG
+# STEP DE ATUALIZAR A IMAGEM NO REPOSITORIO DE MANIFESTOS
+# STEP BONUS: CHECK ARGOCD
+# STEP BONUS: SECRETS YAML APPLY
+# STEP BONUS: FAZER COM QUE O SCRIPT INTEIRO SEJA DINAMICO (NO STEP DE ATT IMAGEM NOS REPOS, PEGAR QUALQUER REPO)
+env:
+  secrets-manager: 
+    DOCKER_PASSWD: DOCKER_CREDENTIALS:DOCKER_PASSWD
+    DOCKER_USR: DOCKER_CREDENTIALS:DOCKER_USR
+    GITHUBTOKEN: GHP_TOKEN:GITHUB_CREDENTIAL
+    # VAR_NAME    SECRET_NAME:SECRET_KEY 
+
+phases:
+  install:
+    run-as: root
+    on-failure: ABORT
+    commands:
+      # Instalar isso em uma imagem Docker (REFATORAR)
+      - echo Installing the system packages
+      - echo y | apt-get update
+      - echo y | apt-get install figlet
+      - echo y | apt-get install git
+      - echo y | apt-get install docker.io
+      # Instalando AWS CLI
+      - echo Configuring Environment Variables
+      - echo Checking the Branch
+      - export COMMIT_ID=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-5) # COMMIT_ID
+      - export PROJECT_NAME=$(echo $CODEBUILD_INITIATOR | cut -d"/" -f2) # PROJECT NAME
+      - export ACCOUNT_ID=$(echo $CODEBUILD_BUILD_ARN | cut -d":" -f5) # ACCOUNT ID 
+      # Pegando a BRANCH
+      - export BRANCH_NAME=$(aws codepipeline get-pipeline --name $PROJECT_NAME | grep "Branch" | cut -d":" -f2 | cut -d'"' -f2) # BRANCH NAME - Talvez um loop?
+      - echo "BRANCH :" | figlet
+      - echo $BRANCH_NAME | figlet
+      - case $BRANCH_NAME in
+        main | master | head | HEAD) export BUILD_ENV="-prd" ;;
+        hml | homolog) export BUILD_ENV="-hml" ;;
+        dev | develop | desenvolvimento) export BUILD_ENV="-dev" ;;
+        esac
+      - export GIT_REPO="$PROJECT_NAME$BUILD_ENV"
+      - git --version
+      - docker --version
+      # Pegando o DOCKER REPO
+      - export DCK_REPO=$(echo $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$PROJECT_NAME)
+      # Printando as variaveis que pegou
+      - echo "Variables in Cache:"
+      - echo "==> Project Name $PROJECT_NAME"
+      - echo "==> Commit ID $COMMIT_ID"
+      - echo "==> BRANCH Name $BRANCH_NAME"
+      - echo "==> Account ID $ACCOUNT_ID"
+      - echo "==> Docker REPO $DCK_REPO"
+      - echo "==> Region $AWS_DEFAULT_REGION "
+      - echo "==> BUILD ENV $BUILD_ENV"
+      - echo "==> GIT REPO $GIT_REPO"
+  pre_build:
+    run-as: root
+    on-failure: ABORT
+    commands:
+      # Construindo a imagem Docker
+      - echo DOCKER BUILD | figlet
+      - echo $DOCKER_PASSWD > docker_password.txt
+      - cat docker_password.txt | docker login --username $DOCKER_USR --password-stdin
+      - docker build -t $PROJECT_NAME . -f Dockerfile
+      - docker images
+      # Jogando a imagem no AWS ECR
+      - echo DOCKER PUSH ECR | figlet
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - docker tag $PROJECT_NAME:latest $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$PROJECT_NAME:$COMMIT_ID
+      - docker images
+      - docker push $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$PROJECT_NAME:$COMMIT_ID
+      # Adicionar STEP abaixo para atualizar o arquivo de deployment.yaml do k8s (pegando o antigo e comparando com o novo)
+      # DOCKER SCAN STEP
+      - echo USING ECR SCAN | figlet
+      - status=$(aws ecr describe-image-scan-findings --repository-name $PROJECT_NAME --image-id imageTag=$COMMIT_ID | grep "status" | cut -d'"' -f4)
+      - echo $status
+      - sleep 10
+      - status=$(aws ecr describe-image-scan-findings --repository-name $PROJECT_NAME --image-id imageTag=$COMMIT_ID | grep "status" | cut -d'"' -f4)
+      - echo $status
+      - while [ $status != "COMPLETE" ]; do echo "SCANNING THE IMAGE $status"; sleep 10; done
+      - aws ecr describe-image-scan-findings --repository-name $PROJECT_NAME --image-id imageTag=$COMMIT_ID > vulnerabilities.txt
+      - echo VULNERABILITIES | figlet
+      - cat vulnerabilities.txt | grep -A 5 -e "HIGH" -e "CRITICAL"
+      # TESTANDO SE O CONTAINER DA RESULT 200
+      - echo TESTING CONTAINER | figlet
+      - docker run -d -p 80:80 --name web-container $PROJECT_NAME
+      - sleep 3
+      # Verificando status code do web container
+      - export status_code=$(docker exec -i web-container curl -I localhost | grep "200" | cut -d" "  -f2)
+      - echo $status_code
+      - sleep 5
+      # Verificando status code do web container se o status for diferente de 200 inicia rollback do push
+      - if [ $status_code -eq 200 ]; then 
+
+          echo "STATUS OK = $status_code" | figlet
+
+          docker stop web-container && docker rm web-container && exit 0
+
+        else
+
+          echo "STATUS NOT OK = $status_code" | figlet
+          
+          echo "ROLLBACK IMAGE PUSH" | figlet
+
+          docker stop web-container && docker rm web-container
+
+          previous_image=$(docker history $PROJECT_NAME | head -n 3 | tail -n 1 | cut -d" " -f1)
+
+          docker tag $previous_image $PROJECT_NAME
+
+          docker push $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$PROJECT_NAME:$previous_image && exit 1
+
+        fi
+      - echo Proceed | figlet
+  build:
+    run-as: root
+    on-failure: ABORT
+    commands:
+    # STEP DO KUBECTL (instalar)
+      - curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+      - sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+      - kubectl version --client
+    # Conectando-se ao CLUSTER:
+      - export CLUSTER=$(echo $PROJECT_NAME | cut -d"-" -f1)
+      - export CLUSTER_NAME=$CLUSTER-cluster
+      - echo $CLUSTER_NAME
+      - aws eks update-kubeconfig --name $CLUSTER_NAME
+      - kubectl get nodes
+    # Verificar se a branch for HML e se for pegar o repo de HML, senao for tentar criar um script de pull request da dev para a main/master/prd
+      - if [[ $BRACH_NAME = "master" ]]; then
+
+          echo $BRANCH_NAME | figlet 
+    
+        else
+
+          echo $BRANCH_NAME | figlet
+
+          git clone https://oauth2:$GITHUBTOKEN@github.com/cl0uD-C1SC0/$GIT_REPO
+
+          cd $GIT_REPO
+
+          echo OLD DEPLOYMENT | figlet
+
+          echo && cat *-dp.yaml
+
+          echo "Criando NAMESPACE"
+
+          namespace=$(cat *-dp.yaml | grep "namespace.*" | cut -d":" -f2)
+
+          echo $namespace
+
+          kubectl create ns $namespace
+
+          cat *-dp.yaml | grep "/" | grep "image" |  sed -i "s|\/$PROJECT_NAME:.*|\/$PROJECT_NAME:$COMMIT_ID|g" *-dp.yaml
+
+          echo NEW DEPLOYMENT | figlet
+
+          echo && cat *-dp.yaml
+
+          git config --global user.email $ACCOUNT_ID
+
+          git config --global user.name "AWS_ACCOUNT"
+
+          git commit -a -m "UPDATE THE IMAGE TO $COMMIT_ID, CodeBuild ID $CODEBUILD_BUILD_ID"
+
+          git push
+ 
+        fi
+      - echo Proceed | figlet
+    # BONUS: Criar STEP que cria secrets
+  post_build:
+    commands:
+    # COMPARAR OS DOIS MANIFESTOS
+    # BONUS: CHECKING DO APP NO ARGOCD
