@@ -9,7 +9,7 @@ metadata:
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-  - host: ingressprd2rp.ddns.net
+  - host: ingress.ddns.net
     http:
       paths:
       - path: /

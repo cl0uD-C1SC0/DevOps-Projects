@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: hyundai-project-container
-          image: 326213389784.dkr.ecr.us-east-1.amazonaws.com/hyundai-project:00b43
+          image: <account-id>.dkr.ecr.us-east-1.amazonaws.com/hyundai-project:00b43
           imagePullPolicy: Always
           readinessProbe:
               tcpSocket:

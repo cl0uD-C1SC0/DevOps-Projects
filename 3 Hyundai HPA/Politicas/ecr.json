@@ -8,7 +8,7 @@
                 "ecr:GetDownloadUrlForLayer",
                 "ecr:BatchGetImage"
             ],
-            "Resource": "arn:aws:ecr:*:041508859400:repository/*"
+            "Resource": "arn:aws:ecr:*:<account-id>:repository/*"
         },
         {
             "Sid": "VisualEditor1",
