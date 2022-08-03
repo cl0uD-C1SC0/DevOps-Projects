@@ -1,20 +1,20 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: challenge-ins
-  namespace: challenge-projeto
+  name: minikube-ins
+  namespace: minikube-projeto
   annotations:
   # use the shared ingress-nginx
     kubernetes.io/ingress.class: "nginx"
 spec:
   rules:
-  - host: ingress-prd-2rp.com
+  - host: minikube-ingress-project.com
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: challenge-service
+            name: minikube-service
             port:
               number: 80

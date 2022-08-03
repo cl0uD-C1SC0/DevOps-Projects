@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: challenge-service
-  namespace: challenge-projeto
+  name: minikube-service
+  namespace: minikube-projeto
 spec:
   ports:
   - port: 80
     targetPort: 80
   selector:
-    app: challenge-projeto
+    app: minikube-projeto

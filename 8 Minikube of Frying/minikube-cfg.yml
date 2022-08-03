@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: challenge-configmap
-  namespace: challenge-projeto
+  name: minikube-configmap
+  namespace: minikube-projeto
 data:
   nome: jose

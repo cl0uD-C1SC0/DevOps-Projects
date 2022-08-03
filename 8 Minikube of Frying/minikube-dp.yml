@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: challenge-deploy
-  namespace: challenge-projeto
+  name: minikube-deploy
+  namespace: minikube-projeto
 spec:
   replicas: 2
   revisionHistoryLimit: 0
   selector:
     matchLabels:
-      app: challenge-projeto
+      app: minikube-projeto
   template:
     metadata:
       labels:
-        app: challenge-projeto
+        app: minikube-projeto
     spec:
       containers:
         - image: josegabriel/web:latest 
-          name: challenge-ui
+          name: minikube-container
           env:
             - name: nome
               valueFrom:
                 configMapKeyRef:
-                  name: challenge-configmap
+                  name: minikube-configmap
                   key: nome
           readinessProbe:
               tcpSocket:
