@@ -136,7 +136,7 @@ phases:
 
           echo $BRANCH_NAME | figlet
 
-          git clone https://oauth2:$GITHUBTOKEN@github.com/cl0uD-C1SC0/$GIT_REPO
+          git clone https://oauth2:$GITHUBTOKEN@github.com/<git-user>/$GIT_REPO
 
           cd $GIT_REPO
 
