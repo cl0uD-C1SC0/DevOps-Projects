@@ -249,6 +249,7 @@ kubectl get hpa
 - WebApp Folder = The APP and Dockerfile
 - EKS-ClusterConfig Folder = The Yaml file containing the configuration of EKS Cluster (use this with eksctl cli)
 - I recommend creating separate manifest and application repositories, examples of how to configure are within the Template > RepositoryCFG directory
+- The Terraform Script are in tests, but, you can use it. Don't forget change the values in script.
 ---
 ## Thanks for seeing my project, this project it is for self-study and for my Professional Portfolio. But, for now connect to me in my LinkedIn profile to see more DevOps projects made by me and Follow-me on the Github! Thanks
 <p align="center">
