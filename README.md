@@ -39,6 +39,8 @@
 
 🔴 Call of Pipe 1998 > Project atuomatized utiling AWS CI/CD tools
 
+🔴 PROJECT STRONG > 100% Automatized project, utilizing open sources tools like Terrascan, Docker-lint, and more, to make a pipeline and provisioning infrastructure based in security and compliance
+
 # Kubernetes Projects:
 🔴 S.O.S ALB > Project utilizing initial concepts of Docker and Kubernetes, but utilizing a Application Load Balancer Ingress in AWS
 
