@@ -26,7 +26,8 @@
       <img src="https://cdn-icons-png.flaticon.com/512/919/919853.png" width=95>
       <img src="https://collabnix.com/wp-content/uploads/2020/05/1200px-Kubernetes_logo_without_workmark-1.png" width=100>
       <img src="https://user-images.githubusercontent.com/90631269/171282288-41ebea8e-dee3-4405-8696-2084264a09e5.png" width=95>
-      <img src="https://www.pngkey.com/png/full/898-8982104_aws-codebuild.png" width=75>      
+      <img src="https://www.pngkey.com/png/full/898-8982104_aws-codebuild.png" width=75>
+      <img src="https://user-images.githubusercontent.com/90631269/209707350-20b639e7-4ea7-4b8c-95c4-e6487031b294.png" width=70>
     </div>
   </div>
 </h1> <br>
