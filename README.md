@@ -1,8 +1,7 @@
-<h1 align="center">Bem vindo ao meu portfólio DevOps</h1> <br>
+<h1 align="center">Portfólio DevOps - José Silva</h1> <br>
 
-<h4 align="center">
-   Neste repositório você encontra todos os meus projetos de DevOps, utilizando principalmente GitOps, monitoramento e outros. 
-</h4> <br>
+<div align="center">
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Share+Tech&weight=100&size=22&duration=6000&pause=2000&color=6EF730&width=800&lines=PLAN+%3E+CODE+%3E+BUILD+%3E+TEST+%3E+RELEASE+%3E+DEPLOY+%3E+OPERATE+%3E+MONITOR" alt="Typing SVG" /></a></div>
 
 <h1 align="center">
   Tecnologias utilizadas
@@ -31,6 +30,10 @@
     </div>
   </div>
 </h1> <br>
+
+<h4 align="center">
+   Neste repositório você encontra todos os meus projetos de DevOps, utilizando principalmente GitOps, monitoramento e outros. 
+</h4> <br>
 
 # BRAZILIAN PORTUGUESE PROJECTS DESCRIPTIONS (PT-BR):
 
