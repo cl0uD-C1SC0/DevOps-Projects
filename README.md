@@ -1,10 +1,10 @@
-<h1 align="center">Portfólio DevOps - José Silva</h1> <br>
+<h1 align="center">Portfolio DevOps - José Silva</h1> <br>
 
 <div align="center">
 <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Share+Tech&weight=100&size=22&duration=6000&pause=2000&color=6EF730&width=800&lines=PLAN+%3E+CODE+%3E+BUILD+%3E+TEST+%3E+RELEASE+%3E+DEPLOY+%3E+OPERATE+%3E+MONITOR" alt="Typing SVG" /></a></div>
 
 <h1 align="center">
-  Tecnologias utilizadas
+ ⬇️ Technologies Used ⬇️ <br> <br>
   <div align="center">
     <img src="https://img.shields.io/badge/Bitbucket-0747a6?style=for-the-badge&logo=bitbucket&logoColor=white">
     <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white">
@@ -32,38 +32,41 @@
 </h1> <br>
 
 <h4 align="center">
-   Neste repositório você encontra todos os meus projetos de DevOps, utilizando principalmente GitOps, monitoramento e outros. 
+  ℹ️ In this repository you can find all my DevOps projects, mainly using GitOps, monitoring and others. 
 </h4> <br>
 
-# BRAZILIAN PORTUGUESE PROJECTS DESCRIPTIONS (PT-BR):
+# PROJECTS DESCRIPTIONS :
 
-## Kubernetes CI/CD Projects:
-🟢 Hyundai HPA > Projeto na AWS, com o uso de Terraform, CI/CD (Full AWS), Automação para Deployment. 
+PROJECT NAME|PROJECT DESCRIPTION|PROJECT KEYS|PROJECT CURRENT STATUS|
+--- | --- | --- | --- |
+[Hyundai HPA](https://github.com/cl0uD-C1SC0/DevOps-Projects/tree/main/1%20Hyundai%20HPA)|Project on AWS, using Terraform, CI/CD (Full AWS), Automation for Deployment|CI/CD, IAC, Container, Microservice, Docker|100% <br> Deployed 🟢|
+[Minikube of Frying](https://github.com/cl0uD-C1SC0/DevOps-Projects/tree/main/8%20Minikube%20of%20Frying)|Project on Local Machine using Minikube, PHP, SonarQube, ArgoCD, HPA and more|Minikube, SonarQube, ArgoCD, HPA, Kubernetes, Docker|100% <br> Deployed 🟢|
+SirJenkins|Project on AWS, using Jenkins (On an EC2) and Argocd (This project is for my course)|CI/CD, Container, Microservice, Docker, ArgoCD|In testing 🟠|
+Project Athenas|The Big Project using CI/CD Concepts, Build an App in Python, Shellscript, Docker, Kubernetes and more|EKS, CodeBuild, SonarQube, ArgoCD, Docker, Kubernetes, Microservice|45% <br> Deployed 🔴|
 
-🟢 SirJenkins > Projeto hospedado na AWS, com o uso de Jenkins (Em uma EC2), Jenkinsfile script e ArgoCD
+# Others Kubernetes CI/CD Projects (In planning phase):
 
-🔴 AirPlaneCI > Projeto utilizando a plataforma DroneCI para configurar uma pipeline. 
+🔴 AirPlaneCI > Project using the DroneCI platform to configure a pipeline. 
 
-🔴 Buildfield 2042 > Projeto utilizando Docker, Kubernetes, GCP, CloudBuild YAML + Shellscripting, Docker Hub, ArgoCD e OWASP
+🔴 Buildfield 2042 > Project using Docker, Kubernetes, GCP, CloudBuild YAML + Shellscripting, Docker Hub, ArgoCD and OWASP
 
-🔴 Call of Pipe 1998 > Projeto de automação utilizando serviços da AWS (CI/CD) - Code Build, Code Piepline, Code Commit
+🔴 Call of Pipe 1998 > Automation project using AWS services (CI/CD) - Code Build, Code Piepline, Code Commit
 
-🔴 PROJECT STRONG > Projeto 100% automatizado, utilizando ferramentas open-source tipo Terrascan, Docker-lint, e mais, para fazer uma pipeline e providenciar uma infraestrutura baseada em segurança. 
+🔴 PROJECT STRONG > 100% automated project, using open-source tools like Terrascan, Docker-lint, and more, to pipeline and provide a security-based infrastructure. 
 
 ## Kubernetes Projects:
-🔴 S.O.S ALB > Projeto utilizando conceitos iniciais de Docker e Kubernetes, mas utilizando um Application Load Balancer Ingress na AWS
+🔴 S.O.S ALB > Project using initial Docker and Kubernetes concepts, but using an Application Load Balancer Ingress on AWS
 
-🔴 CreatingCntainerError > Projeto utilizando conceitos iniciais com ferramentas Docker e Kubernetes
+🔴 CreatingCntainerError > Project using initial concepts with Docker and Kubernetes tools
 
-🔴 University of Nginx > Projeto utilizando conceitos iniciais de Docker e Kubernetes, mas utilizando um Nginx Ingress no Google Cloud
+🔴 University of Nginx > Project using initial Docker and Kubernetes concepts, but using Nginx Ingress on Google Cloud
 
-🟢 Minikube of Frying > Projeto em LocalMachine utilizando um Minikube, PHP, SonarQube, ArgoCD, HPA e mais!
 
 ## Docker CD Projects:
-🔴 DockerBuild > Projeto usando um AWS CodeBuild para criar a imagem do docker e enviar para AWS ECR e DockerHub
+🔴 DockerBuild > Project using an AWS CodeBuild to build the docker image and push to AWS ECR and DockerHub
 
 ## Docker Projects:
-🔴 DOCker > Projeto usando uma imagem Docker e um site para hospedar um site Everbody Hates Chris
+🔴 DOCker > Project using a Docker image and a website to host an Everbody Hates Chris website
 
 <br>
 <br>
